@@ -1,0 +1,47 @@
+{
+  "description": "Disable CAPS_LOCK, use as modifier, toggle only with both shifts",
+  "manipulators": [
+    {
+      "description": "Map caps_lock to hyper key (shift+cmd+ctrl+opt) for arrow keys",
+      "from": {
+        "key_code": "caps_lock",
+        "modifiers": {
+          "optional": ["any"]
+        }
+      },
+      "to": [
+        {
+          "key_code": "left_shift",
+          "modifiers": ["left_command", "left_control", "left_option"]
+        }
+      ],
+      "type": "basic"
+    },
+    {
+      "description": "Toggle caps_lock with left_shift + right_shift",
+      "from": {
+        "key_code": "left_shift",
+        "modifiers": {
+          "mandatory": ["right_shift"],
+          "optional": ["caps_lock"]
+        }
+      },
+      "to": [{ "key_code": "caps_lock" }],
+      "to_if_alone": [{ "key_code": "left_shift" }],
+      "type": "basic"
+    },
+    {
+      "description": "Toggle caps_lock with right_shift + left_shift",
+      "from": {
+        "key_code": "right_shift",
+        "modifiers": {
+          "mandatory": ["left_shift"],
+          "optional": ["caps_lock"]
+        }
+      },
+      "to": [{ "key_code": "caps_lock" }],
+      "to_if_alone": [{ "key_code": "right_shift" }],
+      "type": "basic"
+    }
+  ]
+}
